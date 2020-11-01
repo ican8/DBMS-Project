@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for,redirect,flash
+from flask import Flask, render_template, url_for,redirect,flash,redirect,request
 from form import RegistrationForm, LoginForm
 from flask_mysqldb import MySQL
 
@@ -43,11 +43,52 @@ def customers():
 def update():
     return render_template('update.html', title='update')
 
-@app.route("/insert",methods = ['GET','POST'])
-def insert():
+@app.route("/insert/customer",methods = ['GET','POST'])
+def insert_customer():
+    if request.method == "POST":
+        flash("Data Inserted Successfully")
+        first_name = request.form['first name']
+        last_name = request.form['last name']
+        dob = request.form['dob']
+        phone = request.form['phone']
+        address = request.form['address']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO customers (first_name,last_name, birth_date,phone,address) VALUES (%s, %s, %s, %s, %s)", (first_name,last_name,dob,phone,address))
+        mysql.connection.commit()
+        return redirect(url_for('customers'))
+
     return render_template('insert.html', title='insert')
 
 
+@app.route('/update/customer',methods=['POST','GET'])
+def update_customer():
+
+    if request.method == 'POST':
+        id_data = request.form['id']
+        first_name = request.form['first name']
+        last_name = request.form['last name']
+        dob = request.form['dob']
+        phone = request.form['phone']
+        address = request.form['address']
+        cur = mysql.connection.cursor()
+        cur.execute("""
+               UPDATE customers
+               SET first_name=%s, last_name=%s,birth_date=%s, phone=%s, address=%s
+               WHERE customer_id=%s
+            """, (first_name, last_name, dob,phone, address,id_data))
+        flash("Data Updated Successfully")
+        mysql.connection.commit()
+        return redirect(url_for('customers'))
+    
+    return render_template('home.html')
+
+@app.route('/delete/customer/<string:id_data>', methods = ['GET'])
+def delete_customer(id_data):
+    flash("Record Has Been Deleted Successfully")
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM customers WHERE customer_id=%s", (id_data,))
+    mysql.connection.commit()
+    return redirect(url_for('customers'))
 
 @app.route("/orders")
 def orders():
