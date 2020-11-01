@@ -1,0 +1,14 @@
+DBMS Mini Project
+Title : Inventory Management System
+
+Problem statement :- Design an inventory system for a store manager with functionalities of inspecting and managing store, receive and interpreting orders, maintaining income.
+
+Introduction :-. Many store managers use record-books which are being replaced by smart inventory systems. Instead of maintaining different notebooks for many different records like orders, status of orders, products available and their stock, total income and its source, etc , I aim to provide a software solution to this problem using inventory management system.
+
+Functionalities :- 
+1.	System will be able to maintain products in stock and regulate them
+2.	Accepting orders
+3.	Track orders
+4.	Add notes
+5.	Regulate customers
+6.	Maintain income record
