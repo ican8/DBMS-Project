@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content%}
+
+    <h1>Products</h1>
+
+    <table class="table table-striped">
+        <tr>
+        <th>Product_id</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        </tr>
+
+        {% for row in data %}
+        <tr>
+            <td>{{row.0}}</td>
+            <td>{{row.1}}</td>
+            <td>{{row.2}}</td>
+            <td>{{row.3}}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+
+{% endblock content %}
