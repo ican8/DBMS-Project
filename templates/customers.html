@@ -7,7 +7,7 @@
 
         <div class="col md-12">
 
-            <h2>Customer List <button type="button" class="btn btn-success  pull-right" data-toggle="modal" data-target="#myModal">
+            <h2>Customer List   <button type="button" class="btn btn-success  pull-right" data-toggle="modal" data-target="#myModal">
                 Add Customers</button></h2>
             <br>
 
@@ -32,7 +32,8 @@
                 <th>Birth Date</th>
                 <th>Phone</th>
                 <th>Address</th>
-                <th>Action</th>
+                <th>Edit</th>
+                <th>Delete</th>
                 </tr>
 
                 {% for row in data %}
@@ -43,10 +44,8 @@
                     <td>{{row.3}}</td>
                     <td>{{row.4}}</td>
                     <td>{{row.5}}</td>
-                    <td>
-                        <a href="/update/customer/" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.0}}">Edit</a>
-                        <a href="/delete/customer/{{row.0}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')">Delete</a>
-                    </td>
+                    <td><a href="/update/customer/" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.0}}">Edit</a></td>
+                    <td> <a href="/delete/customer/{{row.0}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')">Delete</a></td>
                 </tr>
 
 

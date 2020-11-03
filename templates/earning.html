@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content%}
+
+    <h1>Earnings from Orders</h1>
+
+    <table class="table table-striped">
+        <tr>
+        <th>Order ID</th>
+        <th>Amount</th>
+        </tr>
+
+        {% for row in data %}
+        <tr>
+            <td>{{row.0}}</td>
+            <td>{{row.1}}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+
+{% endblock content %}

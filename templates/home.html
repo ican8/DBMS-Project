@@ -1,3 +1,71 @@
 {% extends "layout.html" %}
 {% block content %}
+
+<div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Products</h5>
+          <p class="card-text">{{ product_data.0.0 }}</p>
+          <a href="/products" class="btn btn-primary">View Products</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Orders</h5>
+          <p class="card-text">{{ order_data.0.0 }}</p>
+          <a href="/orders" class="btn btn-primary">View Orders</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Customers</h5>
+          <p class="card-text">{{ customer_data.0.0 }}</p>
+          <a href="/customers" class="btn btn-primary">View Customers</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Shippers</h5>
+          <p class="card-text">{{ shipper_data.0.0 }}</p>
+          <a href="/shippers" class="btn btn-primary">View Shippers</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- {% for e in earning_data %}
+            earning += int( {{ e.1 }} )
+    {% endfor%} -->
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Earnings</h5>
+          <p class="card-text">earning</p>
+          <a href="/earning" class="btn btn-primary">View Earnings</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Notes</h5>
+          <!-- <p class="card-text">{{ earning_data.0.0 }}</p> -->
+          <p>notes</p>
+          <a href="/notes" class="btn btn-primary">View Notes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 {% endblock content %}

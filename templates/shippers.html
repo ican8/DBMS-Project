@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block content%}
+<div class="row">
+
+    <div class="col md-12">
+
+        <h2>Shippers    <button type="button" class="btn btn-success  pull-right" data-toggle="modal" data-target="#myModal">
+            Add Shipper</button></h2>
+        <br>
+
+        {%with messages = get_flashed_messages()%}
+        {%if messages%}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissable" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label ="close">
+             <span aria-hidden="true">&times;</span>
+         </button>
+            {{message}}
+        </div>
+        {%endfor%}
+        {%endif%}
+        {%endwith%}
+
+    <table class="table table-striped">
+        <tr>
+        <th>Shipper ID</th>
+        <th>Name</th>
+        </tr>
+
+        {% for row in data %}
+        <tr>
+            <td>{{row.0}}</td>
+            <td>{{row.1}}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+       <div class="modal-content">
+          <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <h4 class="modal-title">Please Insert Data</h4>
+          </div>
+          <div class="modal-body">
+             <form action="{{ url_for('insert_shipper') }}" method="POST">
+                <div class="form-group">
+                    <label>Shipper:</label>
+                    <input type="text" class="form-control" name="name" required="1">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Insert Data</button>
+                 </div>
+              </form> 
+          <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+       </div>
+    </div>
+ </div>
+{% endblock content %}
